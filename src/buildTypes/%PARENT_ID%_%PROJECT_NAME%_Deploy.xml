@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="bb9f9698-671e-4398-a274-48c3de6f834e" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
+  <name>2. Deploy</name>
+  <description />
+  <settings ref="StandardDeployV2">
+    <options>
+      <option name="buildNumberPattern" value="%dep.Tooling_%PROJECT_NAME%_Build.build.number%" />
+    </options>
+    <parameters>
+      <param name="system.Branch" value="%dep.Tooling_%PROJECT_NAME%_Build.GitVersion.BranchName%" />
+    </parameters>
+    <build-runners order="RUNNER_200, RUNNER_201" />
+    <vcs-settings />
+    <requirements />
+    <build-triggers />
+    <artifact-dependencies>
+      <dependency sourceBuildTypeId="Tooling_%PROJECT_NAME%_Build" cleanDestination="false">
+        <revisionRule name="sameChainOrLastFinished" revision="latest.sameChainOrLastFinished" />
+        <artifact sourcePath="nugets\*.nupkg =&gt; nugets" />
+      </dependency>
+    </artifact-dependencies>
+    <dependencies>
+      <depend-on sourceBuildTypeId="Tooling_%PROJECT_NAME%_Build">
+        <options>
+          <option name="run-build-if-dependency-failed" value="RUN_ADD_PROBLEM" />
+          <option name="take-started-build-with-same-revisions" value="true" />
+          <option name="take-successful-builds-only" value="true" />
+        </options>
+      </depend-on>
+    </dependencies>
+    <cleanup />
+  </settings>
+</build-type>
+
