@@ -4,23 +4,23 @@
   <description />
   <settings ref="StandardDeployV2">
     <options>
-      <option name="buildNumberPattern" value="%dep.Tooling_%PROJECT_NAME%_Build.build.number%" />
+      <option name="buildNumberPattern" value="%dep.%PARENT_ID%_%PROJECT_NAME%_Build.build.number%" />
     </options>
     <parameters>
-      <param name="system.Branch" value="%dep.Tooling_%PROJECT_NAME%_Build.GitVersion.BranchName%" />
+      <param name="system.Branch" value="%dep.%PARENT_ID%_%PROJECT_NAME%_Build.GitVersion.BranchName%" />
     </parameters>
     <build-runners order="RUNNER_200, RUNNER_201" />
     <vcs-settings />
     <requirements />
     <build-triggers />
     <artifact-dependencies>
-      <dependency sourceBuildTypeId="Tooling_%PROJECT_NAME%_Build" cleanDestination="false">
+      <dependency sourceBuildTypeId="%PARENT_ID%_%PROJECT_NAME%_Build" cleanDestination="false">
         <revisionRule name="sameChainOrLastFinished" revision="latest.sameChainOrLastFinished" />
         <artifact sourcePath="nugets\*.nupkg =&gt; nugets" />
       </dependency>
     </artifact-dependencies>
     <dependencies>
-      <depend-on sourceBuildTypeId="Tooling_%PROJECT_NAME%_Build">
+      <depend-on sourceBuildTypeId="%PARENT_ID%_%PROJECT_NAME%_Build">
         <options>
           <option name="run-build-if-dependency-failed" value="RUN_ADD_PROBLEM" />
           <option name="take-started-build-with-same-revisions" value="true" />
