@@ -2,10 +2,7 @@
 <build-type xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" uuid="%GUID()%" xsi:noNamespaceSchemaLocation="http://www.jetbrains.com/teamcity/schemas/9.0/project-config.xsd">
   <name>1. Build</name>
   <description />
-  <settings ref="StandardBuildV2">
-    <disabled-settings>
-      <setting-ref ref="RUNNER_207" />
-    </disabled-settings>
+  <settings ref="StandardBuildV2">    
     <parameters />
     <build-runners order="RUNNER_202, RUNNER_203, RUNNER_204, RUNNER_207" />
     <vcs-settings />
