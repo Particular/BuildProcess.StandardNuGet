@@ -4,7 +4,7 @@
   <description />
   <settings ref="StandardDeployV3">
     <options>
-      <option name="buildNumberPattern" value="%dep.%PROJECT_ID%_Build.build.number%" />
+      <option name="buildNumberPattern" value="%dep.%PROJECT_ID%_Build.GitVersion.LegacySemVer%" />
     </options>
     <parameters>
       <param name="system.Branch" value="%dep.%PROJECT_ID%_Build.GitVersion.BranchName%" />
